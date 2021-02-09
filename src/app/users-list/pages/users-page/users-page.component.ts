@@ -8,6 +8,7 @@ import { UsersHTTPService } from "../../services/users-http.service";
   styleUrls: ['./users-page.component.scss']
 })
 export class UsersPageComponent implements OnInit {
+  displayedColumns: string[] = ['position', 'name', 'username', 'email', 'city', 'info'];
   public users: Array<IUserModel>;
 
   constructor(private usersHttpService: UsersHTTPService) { }
