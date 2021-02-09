@@ -47,3 +47,13 @@ body { margin:0; }
   }
 }
 
+.sortIcon {
+  vertical-align: middle;
+  margin: 0 10px 0px -5px;
+}
+.sortIcon_rotate {
+  vertical-align: middle;
+  transform: rotate(180deg);
+  margin: 0 10px 0px -5px;
+}
+

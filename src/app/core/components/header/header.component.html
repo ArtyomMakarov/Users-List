@@ -5,9 +5,10 @@
     </div>
     <div class="header__filter">
       <span class="header__filter__span_grey">Sorting by:</span>
-      <button>date</button>
-      <span class="header__filter__span_blue">by word or sentance</span>
-      <input type="text" class="header__filter__input" title="filter_word">
+      <button (click)="setFilterParams('name')">name</button>
+      <img src="../../../../assets/icons/sort-up.png" alt="sort icon" [hidden]="!showIcon" [ngClass]="{sortIcon: (isIncreased==false), sortIcon_rotate: (isIncreased==true)}">
+      <span class="header__filter__span_blue">find user by name</span>
+      <input type="text" class="header__filter__input" title="filter_word" #filterInput (change)="setFilterParams(filterInput.value)">
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { UsersModalWindowComponent } from './components/users-modal-window/users-modal-window.component';
+import { UsersFilterService } from './services/users-filter.service';
 
 
 
@@ -12,6 +13,7 @@ import { UsersModalWindowComponent } from './components/users-modal-window/users
     CommonModule,
     SharedModule
   ],
-  exports: [ UsersPageComponent ]
+  exports: [ UsersPageComponent ],
+  providers: [ UsersFilterService ]
 })
 export class UsersListModule { }
