@@ -1,0 +1,36 @@
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="closeModalWindow()">&times;</span>
+      <h2>{{userInfo.name}}</h2>
+    </div>
+    <div class="modal-body">
+      <table class="modal-table">
+        <tr>
+          <td>Username</td>
+          <td>{{userInfo.username}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{userInfo.email}}</td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>{{userInfo.address.city + ':' + userInfo.address.street + ',' + userInfo.address.suite}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{userInfo.phone}}</td>
+        </tr>
+        <tr>
+          <td>Website</td>
+          <td>{{userInfo.website}}</td>
+        </tr>
+        <tr>
+          <td>Company</td>
+          <td>{{userInfo.company.name}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

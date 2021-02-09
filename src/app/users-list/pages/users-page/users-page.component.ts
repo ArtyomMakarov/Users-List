@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IUserModel } from "../../models/IUserModel";
-import { UsersHTTPService } from "../../services/users-http.service";
+import { IUserModel } from "../../models";
+import { UsersHTTPService } from "../../services";
 
 @Component({
   selector: 'app-users-page',
@@ -8,17 +8,24 @@ import { UsersHTTPService } from "../../services/users-http.service";
   styleUrls: ['./users-page.component.scss']
 })
 export class UsersPageComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'username', 'email', 'city', 'info'];
+  public displayedColumns: string[] = ['position', 'name', 'username', 'email', 'city', 'info'];
   public users: Array<IUserModel>;
+  public isModalOpened: boolean;
+  public userInfo: IUserModel;
 
   constructor(private usersHttpService: UsersHTTPService) { }
 
   ngOnInit(): void {
-    console.log('sacas');
-    this.usersHttpService.loadUsersData().subscribe( res => {
-      this.users = res;
-      console.log(this.users);
-    });
+    this.usersHttpService.loadUsersData().subscribe( res => this.users = res );
+  }
+
+  openModalWindow(user: IUserModel): void {
+    this.isModalOpened = true;
+    this.userInfo = user;
+  }
+
+  closeModalWindow(val: boolean): void {
+    this.isModalOpened = val;
   }
 
 }
