@@ -1,0 +1,49 @@
+body { margin:0; }
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #E5E5E5;
+  position: relative;
+  min-height: 50px;
+
+  &__title {
+    width: fit-content;
+    h1 {
+      color: #2F80ED;
+    }
+  }
+
+  &__filter {
+    width: fit-content;
+    margin: 0 auto;
+
+    button{
+      border: none;
+      color: #2F80ED;
+      text-decoration: underline;
+      background: #E5E5E5;
+      margin: 0 5px 0 2px;
+      cursor: pointer;
+    }
+
+    &__span_grey{
+      color: grey;
+    }
+
+    &__span_blue{
+      color: #2F80ED;
+      margin-right: 10px;
+    }
+
+    &__input{
+      border: none;
+    }
+  }
+}
+
