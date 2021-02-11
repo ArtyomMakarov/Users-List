@@ -9,6 +9,7 @@ import {take} from "rxjs/operators";
 import { HeaderFilterParamsService } from '../../../core/services';
 import {UsersFilterService} from "../../services/users-filter.service";
 
+const FILTER_BY_NAME = 'name';
 
 @Component({
   selector: 'app-users-page',
@@ -32,7 +33,7 @@ export class UsersPageComponent implements OnInit, OnDestroy {
       this.activateRoute.queryParams.pipe(take(1)))
       .subscribe( ([users, params]) => {
         this.users = users;
-        let user = this.users.filter( user => user.id == params['user']);
+        let user: Array<IUserModel> = this.users.filter( user => user.id == params['user']);
 
         if (user.length) {
           this.userInfo = user[0];
@@ -42,7 +43,7 @@ export class UsersPageComponent implements OnInit, OnDestroy {
 
     this.filterParamsSub = this.headerFilterParamsService.filterParams
       .subscribe( params => {
-        if (params.typeOfFilter === 'name') {
+        if (params.typeOfFilter === FILTER_BY_NAME) {
           this.users = this.usersFilterService.sortUsers(this.users, params);
         } else {
           this.users = this.usersFilterService.filterUsers(this.users, params);

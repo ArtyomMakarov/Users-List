@@ -9,13 +9,14 @@ export class UsersFilterService {
   public sortUsers(users: Array<IUserModel>,
                      params: {typeOfFilter: string, isIncreased: boolean}): Array<IUserModel> {
 
-    let newUsers: Array<IUserModel>;
+    let newUsers: Array<IUserModel> = users.slice().sort((a, b) => {
 
-    if (params.isIncreased === true) {
-      newUsers = users.slice().sort((a, b) => a.name > b.name ? 1 : -1);
-    } else {
-      newUsers = users.slice().sort((a, b) => a.name < b.name ? 1 : -1);
-    }
+      if (!!params.isIncreased) {
+        return a.name > b.name ? 1 : -1
+      } else  {
+        return a.name < b.name ? 1 : -1;
+      }
+    });
 
     return newUsers;
   }
