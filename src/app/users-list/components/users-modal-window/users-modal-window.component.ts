@@ -7,7 +7,7 @@ import {IUserModel} from "../../models";
   styleUrls: ['./users-modal-window.component.scss']
 })
 export class UsersModalWindowComponent implements OnInit {
-  @Output('modalClosed') private isModalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output('modalClosed') private isModalClosed: EventEmitter<void> = new EventEmitter<void>();
   @Input() public userInfo: IUserModel;
 
   constructor() { }
@@ -16,7 +16,7 @@ export class UsersModalWindowComponent implements OnInit {
   }
 
   closeModalWindow(): void {
-    this.isModalClosed.emit(false);
+    this.isModalClosed.emit();
   }
 
 }

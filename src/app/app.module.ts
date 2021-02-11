@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { UsersListModule } from './users-list/users-list.module';
-import { HeaderFilterParamsService } from './core/services/header-filter-params.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { HeaderFilterParamsService } from './core/services/header-filter-params.
     UsersListModule,
     HttpClientModule
   ],
-  providers: [HeaderFilterParamsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

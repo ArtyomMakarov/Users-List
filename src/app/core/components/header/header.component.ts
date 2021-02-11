@@ -8,7 +8,7 @@ import {HeaderFilterParamsService} from "../../services/header-filter-params.ser
 })
 export class HeaderComponent implements OnInit {
   public showIcon: boolean = false;
-  public isIncreased: boolean;
+  public isIncreased: boolean = false;
 
   constructor(private headerFilterParamsService: HeaderFilterParamsService) { }
 
@@ -17,21 +17,15 @@ export class HeaderComponent implements OnInit {
 
   public setFilterParams(val: string): void {
     this.changeShowIcon(val);
-    this.isIncreased === true ? this.changeFilterIncreaseParam(val, true) :
-      this.changeFilterIncreaseParam(val, false);
+    this.changeFilterIncreaseParam(val);
   }
 
-  public changeFilterIncreaseParam(typeOfFilter: string, isIncreased: boolean): void {
-    if (isIncreased) {
-      this.isIncreased = false;
-      this.headerFilterParamsService.setFilterParams({typeOfFilter: typeOfFilter, isIncreased: true});
-    } else {
-      this.isIncreased = true;
-      this.headerFilterParamsService.setFilterParams({typeOfFilter: typeOfFilter, isIncreased: false});
-    }
+  public changeFilterIncreaseParam(typeOfFilter: string): void {
+    this.headerFilterParamsService.setFilterParams({typeOfFilter: typeOfFilter, isIncreased: this.isIncreased});
+    this.isIncreased = !this.isIncreased;
   }
 
   public changeShowIcon(val: string): void {
-   val === 'name' ? this.showIcon = true : this.showIcon = false;
+   this.showIcon = (val === 'name');
   }
 }

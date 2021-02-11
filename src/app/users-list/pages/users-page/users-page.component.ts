@@ -33,14 +33,20 @@ export class UsersPageComponent implements OnInit, OnDestroy {
       .subscribe( ([users, params]) => {
         this.users = users;
         let user = this.users.filter( user => user.id == params['user']);
-        this.userInfo = user[0];
-        this.isModalOpened = params['modal'];
-        console.log(this.userInfo, this.isModalOpened)
+
+        if (user.length) {
+          this.userInfo = user[0];
+          this.isModalOpened = params['modal'];
+        }
     });
 
     this.filterParamsSub = this.headerFilterParamsService.filterParams
       .subscribe( params => {
-        this.users = this.usersFilterService.filterUsers(this.users, params);
+        if (params.typeOfFilter === 'name') {
+          this.users = this.usersFilterService.sortUsers(this.users, params);
+        } else {
+          this.users = this.usersFilterService.filterUsers(this.users, params);
+        }
     });
   }
 
@@ -49,14 +55,14 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   }
 
   openModalWindow(user: IUserModel): void {
-    this.route.navigate(['/users'], { queryParams: { modal: 'true', user: `${user.id}`}});
-    this.isModalOpened = true;
     this.userInfo = user;
+    this.isModalOpened = true;
+    this.route.navigate(['/users'], { queryParams: { modal: 'true', user: `${user.id}`}});
   }
 
-  closeModalWindow(val: boolean): void {
+  closeModalWindow(): void {
+    this.isModalOpened = false;
     this.route.navigate(['/users']);
-    this.isModalOpened = val;
   }
 
 }

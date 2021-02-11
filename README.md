@@ -1,5 +1,7 @@
 # UsersList
 
+** Run `npm run start` to start project
+
 ## Using project tasks
 
 Users sorts by alphabet in different ways depends on name button clicks.

@@ -34,4 +34,4 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<app-users-modal-window *ngIf="isModalOpened" [userInfo]="userInfo" (modalClosed)="closeModalWindow($event)"></app-users-modal-window>
+<app-users-modal-window *ngIf="isModalOpened" [userInfo]="userInfo" (modalClosed)="closeModalWindow()"></app-users-modal-window>
